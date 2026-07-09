@@ -11,7 +11,13 @@ const CRITERIA = [
 const BLOCKS = 5;
 
 function computeStrength(pwd) {
-  if (!pwd) return { criteria: {}, totalScore: 0, level: 'empty' };
+  if (!pwd) {
+    // Campo vuoto: criteria VALORIZZATI a zero — il render li legge sempre
+    // (criteria[key] undefined crashava l'app al primo caricamento).
+    const criteria = {};
+    for (const { key } of CRITERIA) criteria[key] = { raw: 0, filled: 0, max: BLOCKS };
+    return { criteria, totalScore: 0, level: 'empty' };
+  }
 
   const checks = {
     length: Math.min(pwd.length, 10),

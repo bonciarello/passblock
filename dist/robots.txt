@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cristianporco.it/app/strumento-visivo-per-confrontare-due-codici-di-sicurezza-delle-password/sitemap.xml
